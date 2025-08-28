@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(hex_toolkit_echo_plus)
+project(hex_toolkit_ark)
 
 find_package(catkin REQUIRED)
 

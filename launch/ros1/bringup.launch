@@ -16,14 +16,14 @@
     <group if="$(arg visual_flag)">
         # description
         <param name="robot_description"
-               command="xacro $(find hex_toolkit_echo_plus)/urdf/echo_plus_ros1.xacro" />
+               command="xacro $(find hex_toolkit_ark)/urdf/ark.urdf" />
         # robot state publisher
         <node name="robot_state_publisher"
               pkg="robot_state_publisher"
               type="robot_state_publisher" />
         # rviz
         <node name="rviz" pkg="rviz" type="rviz"
-              args="-d $(find hex_toolkit_echo_plus)/config/ros1/display.rviz" />
+              args="-d $(find hex_toolkit_ark)/config/ros1/display.rviz" />
     </group>
 
     # sim
@@ -32,7 +32,7 @@
         <include file="$(find gazebo_ros)/launch/empty_world.launch" />
         # spawn
         <node name="spawn_urdf" pkg="gazebo_ros" type="spawn_model"
-              args="-urdf -model echo_plus -param robot_description -x 0 -y 0 -z 0" />
+              args="-urdf -model ark -param robot_description -x 0 -y 0 -z 0" />
     </group>
     # real
     <group unless="$(arg sim_flag)">

@@ -37,14 +37,12 @@ def generate_launch_description():
     )
 
     # pid track
-    urdf_file_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/urdf/echo_plus.urdf'
-    pid_root_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus')
-    pid_trace_yaml_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/config/ros2/pid_trace.yaml'
+    urdf_file_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/urdf/ark.urdf'
+    pid_trace_yaml_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/config/ros2/pid_trace.yaml'
     pid_trace_node = Node(
-        package='hex_toolkit_echo_plus',
+        package='hex_toolkit_ark',
         executable='pid_trace',
         name='pid_trace',
         output="screen",
@@ -53,7 +51,6 @@ def generate_launch_description():
             {
                 'use_sim_time': LaunchConfiguration('sim_time_flag'),
                 'model_path': urdf_file_path,
-                'pid_root': pid_root_path,
             },
             pid_trace_yaml_path,
         ],
@@ -68,8 +65,8 @@ def generate_launch_description():
     )
 
     # test
-    list_gen_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/config/ros2/list_gen.yaml'
+    list_gen_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/config/ros2/list_gen.yaml'
     test_group = GroupAction(
         [
             Node(
@@ -94,8 +91,8 @@ def generate_launch_description():
     )
 
     # bringup
-    bringup_launch_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/launch/ros2/bringup.launch.py'
+    bringup_launch_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/launch/ros2/bringup.launch.py'
     bringup_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([bringup_launch_path]),
         launch_arguments={

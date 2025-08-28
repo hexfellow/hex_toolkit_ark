@@ -1,9 +1,9 @@
 
-# **hex_toolkit_echo_plus**
+# **hex_toolkit_ark**
 
 ## **Overview**
 
-The **hex_toolkit_echo_plus** package provides a suite of tools for **Echo Plus**, including URDF models and a simple pid trajectory ßtracking demo.
+The **hex_toolkit_ark** package provides a suite of tools for **Echo Plus**, including URDF models and a simple pid trajectory ßtracking demo.
 
 ### **Maintainer**
 
@@ -56,7 +56,7 @@ If you prefer to set up manually, please note that the repository may not functi
 
    ```bash
    git clone https://github.com/hexfellow/hex_toolkit_general_chassis.git
-   git clone https://github.com/hexfellow/hex_toolkit_echo_plus.git
+   git clone https://github.com/hexfellow/hex_toolkit_ark.git
    ```
 
 3. Build the workspace:
@@ -162,13 +162,13 @@ Bringup **Echo Plus**.
 - **ROS 1**:
 
   ```bash
-  roslaunch hex_toolkit_echo_plus bringup.launch
+  roslaunch hex_toolkit_ark bringup.launch
   ```
 
 - **ROS 2**:
 
   ```bash
-  ros2 launch hex_toolkit_echo_plus bringup.launch.py
+  ros2 launch hex_toolkit_ark bringup.launch.py
   ```
 
 ---
@@ -184,13 +184,13 @@ Bringup **Echo Plus** and control the chassis using a gamepad.
 - **ROS 1**:
 
   ```bash
-  roslaunch hex_toolkit_echo_plus joy_ctrl.launch
+  roslaunch hex_toolkit_ark joy_ctrl.launch
   ```
 
 - **ROS 2**:
 
   ```bash
-  ros2 launch hex_toolkit_echo_plus joy_ctrl.launch.py
+  ros2 launch hex_toolkit_ark joy_ctrl.launch.py
   ```
 
 ---
@@ -206,13 +206,13 @@ Bringup **Echo Plus** and control the chassis using the keyboard.
 - **ROS 1**:
 
   ```bash
-  roslaunch hex_toolkit_echo_plus key_ctrl.launch
+  roslaunch hex_toolkit_ark key_ctrl.launch
   ```
 
 - **ROS 2**:
 
   ```bash
-  ros2 launch hex_toolkit_echo_plus key_ctrl.launch.py
+  ros2 launch hex_toolkit_ark key_ctrl.launch.py
   ```
 
 ---
@@ -228,11 +228,11 @@ Bringup **Echo Plus** and use pid to follow a trajectory for testing.
 - **ROS 1**:
 
   ```bash
-  roslaunch hex_toolkit_echo_plus pid_trace.launch
+  roslaunch hex_toolkit_ark pid_trace.launch
   ```
 
 - **ROS 2**:
 
   ```bash
-  ros2 launch hex_toolkit_echo_plus pid_trace.launch.py
+  ros2 launch hex_toolkit_ark pid_trace.launch.py
   ```

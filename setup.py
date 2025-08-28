@@ -2,7 +2,7 @@ import os
 from setuptools import setup, find_packages
 from glob import glob
 
-package_name = 'hex_toolkit_echo_plus'
+package_name = 'hex_toolkit_ark'
 
 
 def get_files(tar: str, src: str):
@@ -39,7 +39,7 @@ setup(
     license='TODO: License declaration',
     entry_points={
         'console_scripts': [
-            "pid_trace = hex_toolkit_echo_plus.pid_trace:main",
+            "pid_trace = hex_toolkit_ark.pid_trace:main",
         ],
     },
 )

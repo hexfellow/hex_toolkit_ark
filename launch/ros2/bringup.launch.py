@@ -34,10 +34,10 @@ def generate_launch_description():
     )
 
     # visual
-    urdf_file_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/urdf/echo_plus_ros2.xacro'
-    rviz_file_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/config/ros2/display.rviz'
+    urdf_file_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/urdf/ark.urdf'
+    rviz_file_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/config/ros2/display.rviz'
     visual_group = GroupAction(
         [
             Node(
@@ -68,8 +68,8 @@ def generate_launch_description():
     )
 
     # sim
-    odom_sim_param = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/config/ros2/odom_sim.yaml'
+    odom_sim_param = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/config/ros2/odom_sim.yaml'
     sim_group = GroupAction(
         [
             Node(

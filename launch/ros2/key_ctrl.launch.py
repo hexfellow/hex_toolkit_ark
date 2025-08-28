@@ -31,8 +31,8 @@ def generate_launch_description():
     )
 
     # key ctrl
-    key_ctrl_param = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/config/ros2/key_ctrl.yaml'
+    key_ctrl_param = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/config/ros2/key_ctrl.yaml'
     key_ctrl_node = Node(
         package='hex_toolkit_general_chasssis',
         executable='key_ctrl',
@@ -53,8 +53,8 @@ def generate_launch_description():
     )
 
     # bringup
-    bringup_launch_path = FindPackageShare('hex_toolkit_echo_plus').find(
-        'hex_toolkit_echo_plus') + '/launch/ros2/bringup.launch.py'
+    bringup_launch_path = FindPackageShare('hex_toolkit_ark').find(
+        'hex_toolkit_ark') + '/launch/ros2/bringup.launch.py'
     bringup_launch = IncludeLaunchDescription(
         PythonLaunchDescriptionSource([bringup_launch_path]),
         launch_arguments={
