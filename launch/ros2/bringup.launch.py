@@ -22,7 +22,7 @@ def generate_launch_description():
     # arg
     visual_flag = DeclareLaunchArgument(
         'visual_flag',
-        default_value='true',
+        default_value='false',
     )
     sim_time_flag = DeclareLaunchArgument(
         'sim_time_flag',
@@ -30,7 +30,27 @@ def generate_launch_description():
     )
     hardware_flag = DeclareLaunchArgument(
         'hardware_flag',
+        default_value='true',
+    )
+    url = DeclareLaunchArgument(
+        'url',
+        default_value='ws://192.168.177.1:8439',
+        description='The URL of the robot.'
+    )
+    read_only = DeclareLaunchArgument(
+        'read_only',
         default_value='false',
+        description='Whether to read only the chassis state.'
+    )
+    frame_id = DeclareLaunchArgument(
+        'frame_id',
+        default_value='base_link',
+        description='Frame ID of the chassis.'
+    )
+    simple_mode = DeclareLaunchArgument(
+        'simple_mode',
+        default_value='true',
+        description='Simple mode of the chassis.'
     )
 
     # visual
@@ -99,21 +119,42 @@ def generate_launch_description():
     real_group = GroupAction(
         [
             Node(
-                package='xpkg_vehicle',
-                executable='xnode_vehicle',
-                name='xnode_vehicle',
+                package='xpkg_bridge',
+                executable='xnode_bridge',
+                name='xnode_bridge',
                 output='screen',
                 emulate_tty=True,
                 parameters=[{
-                    'can_device': 'hexcan0',
-                    'calc_odom_from_speed': False,
+                    'url': LaunchConfiguration('url'),
+                    'read_only': LaunchConfiguration('read_only'),
                 }],
                 remappings=[
                     # subscribe
-                    ('/cmd_vel', '/cmd_vel'),
+                    ('/ws_down', '/ws_down'),
                     # publish
+                    ('/ws_up', '/ws_up')
+                ]
+            ),
+            Node(
+                package='hex_vehicle',
+                executable='chassis_trans',
+                name='hex_chassis',
+                output='screen',
+                emulate_tty=True,
+                parameters=[{
+                    'frame_id': LaunchConfiguration('frame_id'),
+                    'simple_mode': LaunchConfiguration('simple_mode'),
+                }],
+                remappings=[
+                    # publish
+                    ('/motor_status', '/motor_states'),
+                    ('/real_vel', '/real_vel'),
                     ('/odom', '/odom'),
-                ],
+                    # subscribe
+                    ('/joint_ctrl', '/joint_ctrl'),
+                    ('/cmd_vel', '/cmd_vel'),
+                    ('/clear_err', '/clear_err')
+                ]
             ),
         ],
         condition=IfCondition(LaunchConfiguration('hardware_flag')),
@@ -124,6 +165,10 @@ def generate_launch_description():
         visual_flag,
         sim_time_flag,
         hardware_flag,
+        url,
+        read_only,
+        frame_id,
+        simple_mode,
         # visual
         visual_group,
         # sim

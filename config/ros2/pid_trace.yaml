@@ -11,12 +11,12 @@ pid_trace:
     # limit
     limit_vel:
       # [vel_norm, omega]
-      - 0.5
-      - 1.57
+      - 1.0
+      - 2.00
     limit_acc:
       # [acc_norm, alpha]
-      - 6.0
-      - 3.14
+      - 10.0
+      - 10.0
 
     # obs
     obs_weights: # weights of observation
@@ -32,9 +32,9 @@ pid_trace:
       # [kd_x, kd_yaw]
       - "[100.0, 100.0]"
       - "[0.0, 0.0]"
-      - "[20.0, 20.0]"
+      - "[30.0, 40.0]"
     trace_err_limit:
       # [pos_err, yaw_err]
       - 0.5
-      - 1.0
-    trace_switch_dist: 0.1
+      - 2.0
+    trace_switch_dist: 0.2

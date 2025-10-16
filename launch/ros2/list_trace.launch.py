@@ -21,7 +21,7 @@ def generate_launch_description():
     # arg
     visual_flag = DeclareLaunchArgument(
         'visual_flag',
-        default_value='true',
+        default_value='false',
     )
     sim_time_flag = DeclareLaunchArgument(
         'sim_time_flag',
@@ -29,7 +29,7 @@ def generate_launch_description():
     )
     hardware_flag = DeclareLaunchArgument(
         'hardware_flag',
-        default_value='false',
+        default_value='true',
     )
     test_flag = DeclareLaunchArgument(
         'test_flag',
